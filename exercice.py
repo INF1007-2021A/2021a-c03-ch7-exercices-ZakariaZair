@@ -15,18 +15,27 @@ def volumeEpsiloide(demi_axe1, demi_axe2, demi_axe3, masse_volumique):
     volume_et_masse = (volume, masse)
     return volume_et_masse
 
+
 def arbre(n):
     t = turtle
-    compteur = 0
-    x = 2.6
-    while True:
-        t.fd(x*100)
-        t.lt()
-        t.rt()
-        t.bk()
-        compteur += 1
-        if compteur % 4 == 0:
-            x += 0.7
+    x = 100
+    i = 1
+    if n % 2 == 0:
+        i = 1
+    else:
+        i = -1
+
+    while n > 0:
+        t.lt(90*i)
+        t.fd(x)
+        t.rt(30*i)
+        t.fd(x/2)
+        arbre(n)
+        t.bk(x/2)
+        t.lt(-30*i)
+        t.bk(x)
+        t.rt(-90*i)
+        n -= 1
 
 
 
@@ -38,6 +47,6 @@ def arbre(n):
 if __name__ == '__main__':
     # TODO: Appelez vos fonctions ici
     print(volumeEpsiloide(2,3,4,0.294))
-    niveau = 3
+    niveau = 2
     arbre(niveau)
     
